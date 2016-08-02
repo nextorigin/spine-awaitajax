@@ -49,6 +49,7 @@ class Base
   ajaxQueue: (params, defaults) ->
     xhr = null
     rv  = new iced.Rendezvous
+    __iced_deferrals = null
 
     settings     = @ajaxSettings(params, defaults)
     defersuccess = settings.success

@@ -1,6 +1,6 @@
 Spine   = @Spine or require "spine"
 {Model} = Spine
-# {Pipeliner} = require '/lib/icedlib'
+{Pipeliner} = require "iced-runtime"
 
 
 Ajax =

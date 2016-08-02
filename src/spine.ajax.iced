@@ -102,19 +102,18 @@ class Collection extends Base
       success: @recordsResponse
       error: @failResponse
 
-  fetch: (params = {}, options = {}) ->
+  fetch: (params = {}) ->
     if id = params.id
       delete params.id
-      @find(id, params).done (record) =>
-        @model.refresh(record, options)
+      @find(id, params)
     else
-      @all(params).done (records) =>
-        @model.refresh(records, options)
+      @all(params)
 
   # Private
 
   recordsResponse: (data, status, xhr) =>
     @model.trigger('ajaxSuccess', null, status, xhr)
+    @model.refresh(data)
 
   failResponse: (xhr, statusText, error) =>
     @model.trigger('ajaxError', null, xhr, statusText, error)

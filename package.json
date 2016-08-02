@@ -1,0 +1,39 @@
+{
+  "name": "spine-awaitajax",
+  "version": "1.0.0",
+  "description": "Spine.Ajax & AwaitAjax for Spine.JS and Iced CoffeeScript await/defer pattern",
+  "main": "spine-awaitajax.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nextorigin/spine-awaitajax.git"
+  },
+  "keywords": [
+    "spine",
+    "iced",
+    "icedcoffeescript",
+    "await",
+    "defer",
+    "ajax",
+    "browser",
+    "jquery",
+    "xhr"
+  ],
+  "author": "doublerebel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nextorigin/spine-awaitajax/issues"
+  },
+  "homepage": "https://github.com/nextorigin/spine-awaitajax#readme",
+  "devDependencies": {
+    "jquery": "^3.1.0"
+  },
+  "peerDependencies": {
+    "spine": "^1.6.2"
+  }
+}

@@ -58,7 +58,7 @@ class Base
     settings.error   = rv.id('error').defer xhr, statusText, error
 
     request = (next) ->
-      xhr = new $.Ajax(settings)
+      xhr = new $.ajax(settings)
       await rv.wait defer status
       switch status
         when 'success' then defersuccess data, statusText, xhr

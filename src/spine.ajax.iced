@@ -76,7 +76,7 @@ class Base
     processData: false
     headers: {'X-Requested-With': 'XMLHttpRequest'}
 
-  queue: Ajax.queue
+  queue: Ajax.queue.bind Ajax
 
   ajax: (params, defaults) ->
     new $.ajax @ajaxSettings(params, defaults)

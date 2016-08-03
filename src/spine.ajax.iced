@@ -6,7 +6,40 @@ iced    = require "iced-runtime"
 
 Ajax =
   getURL: (object) ->
-    object and object.url?() or object.url
+    if object.className?
+      @generateURL(object)
+    else
+      @generateURL(object, encodeURIComponent(object.id))
+
+  getCollectionURL: (object) ->
+    @generateURL(object)
+
+  getScope: (object) ->
+    object.scope?() or object.scope
+
+  getCollection: (object) ->
+    if object.url isnt object.generateURL
+      if typeof object.url is 'function'
+        object.url()
+      else
+        object.url
+    else if object.className?
+      object.className.toLowerCase() + 's'
+
+  generateURL: (object, args...) ->
+    collection = Ajax.getCollection(object) or Ajax.getCollection(object.constructor)
+    scope = Ajax.getScope(object) or Ajax.getScope(object.constructor)
+    args.unshift(collection)
+    args.unshift(scope)
+    # construct and clean url
+    path = args.join('/')
+    path = path.replace /(\/\/)/g, "/"
+    path = path.replace /^\/|\/$/g, ""
+    # handle relative urls vs those that use a host
+    if path.indexOf("../") isnt 0
+      Model.host + "/" + path
+    else
+      path
 
   enabled: true
 
@@ -186,23 +219,26 @@ class Singleton extends Base
 # Ajax endpoint
 Model.host = ''
 
+GenerateURL =
+  include: (args...) ->
+    args.unshift(encodeURIComponent(@id))
+    Ajax.generateURL(this, args...)
+  extend: (args...) ->
+    Ajax.generateURL(this, args...)
+
 Include =
   ajax: -> new Singleton(this)
 
-  url: (args...) ->
-    url = Ajax.getURL(@constructor)
-    url += '/' unless url.charAt(url.length - 1) is '/'
-    url += encodeURIComponent(@id)
-    args.unshift(url)
-    args.join('/')
+  generateURL: GenerateURL.include
+
+  url: GenerateURL.include
 
 Extend =
   ajax: -> new Collection(this)
 
-  url: (args...) ->
-    args.unshift(@className.toLowerCase() + 's')
-    args.unshift(Model.host)
-    args.join('/')
+  generateURL: GenerateURL.extend
+
+  url: GenerateURL.extend
 
 Model.Ajax =
   extended: ->

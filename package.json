@@ -24,7 +24,13 @@
     "jquery",
     "xhr"
   ],
-  "author": "doublerebel",
+  "contributors": [
+    "maccman",
+    "aeischeid",
+    "cengebretson",
+    "adambiggs",
+    "doublerebel"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nextorigin/spine-awaitajax/issues"

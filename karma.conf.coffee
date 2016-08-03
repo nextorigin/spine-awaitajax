@@ -20,20 +20,13 @@ module.exports = (config) ->
     frameworks: [
       'jasmine-ajax'
       'jasmine'
+      'browserify'
     ]
 
 
     # list of files / patterns to load in the browser
     files: [
       "http://code.jquery.com/jquery-#{ JQUERY_VERSION }.min.js"
-      'src/spine.coffee'
-      'src/route.coffee'
-      'src/relation.coffee'
-      'src/manager.coffee'
-      'src/local.coffee'
-      'src/list.coffee'
-      'src/bindings.coffee'
-      'src/ajax.coffee'
       'test/*.js'
     ]
 
@@ -46,12 +39,13 @@ module.exports = (config) ->
     # preprocess matching files before serving them to the browser
     # available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors:
-      '**/*.coffee': ['coffee']
+      'test/*.js':   ['browserify']
 
-    coffeePreprocessor:
-      options:
-        bare: false
-        sourceMap: false
+    browserify:
+      transform:[
+        ['browserify-iced-coffee-coverage', {runtime: 'window', instrumentor: 'istanbul'}]
+      ]
+      extensions: [".iced"]
 
 
     # test results reporter to use

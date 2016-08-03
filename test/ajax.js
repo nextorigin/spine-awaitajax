@@ -1,3 +1,6 @@
+Spine = require("spine");
+Ajax  = require("../src/spine.ajax");
+
 describe("Ajax", function(){
   var User;
   var defaultAjaxConfig = $.extend({}, Spine.Ajax.config);

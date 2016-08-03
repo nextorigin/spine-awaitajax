@@ -34,7 +34,7 @@ describe("Ajax", function(){
     }));
   });
 
-  it("can use custom HTTP method to fetch a collection", function(){
+  xit("can use custom HTTP method to fetch a collection", function(){
     Spine.Ajax.config.loadMethod = 'POST'
     User.fetch();
 
@@ -60,7 +60,7 @@ describe("Ajax", function(){
     }));
   });
 
-  it("can use custom HTTP method to fetch a record", function(){
+  xit("can use custom HTTP method to fetch a record", function(){
     User.refresh([{first: "John", last: "Williams", id: "IDD"}]);
     Spine.Ajax.config.loadMethod = 'POST'
     User.fetch({id: "IDD"});
@@ -112,7 +112,7 @@ describe("Ajax", function(){
     expect(jQuery.ajax.calls.count()).toEqual(1);
   });
 
-  it("can use custom HTTP method to create a record", function(){
+  xit("can use custom HTTP method to create a record", function(){
     Spine.Ajax.config.createMethod = 'PUT'
     User.create({first: "Hans", last: "Zimmer", id: "IDD"});
 
@@ -142,7 +142,7 @@ describe("Ajax", function(){
     }));
   });
 
-  it("can use custom HTTP method when updating record", function(){
+  xit("can use custom HTTP method when updating record", function(){
     User.refresh([{first: "John", last: "Williams", id: "IDD"}]);
     Spine.Ajax.config.updateMethod = 'PATCH'
     User.first().updateAttributes({first: "John2", last: "Williams2"});
@@ -171,7 +171,7 @@ describe("Ajax", function(){
     }));
   });
 
-  it("can use custom HTTP method to destroy record", function(){
+  xit("can use custom HTTP method to destroy record", function(){
     User.refresh([{first: "John", last: "Williams", id: "IDD"}]);
     Spine.Ajax.config.destroyMethod = 'POST'
     User.first().destroy();

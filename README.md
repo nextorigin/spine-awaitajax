@@ -1,6 +1,14 @@
 # spine-awaitajax
 
+[![Build Status][ci-master]][travis-ci]
+[![Coverage Status][coverage-master]][coveralls]
+[![Dependency Status][dependency]][david]
+[![devDependency Status][dev-dependency]][david]
+[![Downloads][downloads]][npm]
+
 Turns Spine/jQuery Ajax requests into single-callback form, for use with await/defer
+
+[![NPM][npm-stats]][npm]
 
 ### What?
 
@@ -25,3 +33,16 @@ await Ajax.awaitQueuedGet {url: "http://siteaftergoogle.com"}, defer err, respon
 ### License
 
 MIT
+
+
+  [ci-master]: https://img.shields.io/travis/nextorigin/spine-awaitajax/master.svg?style=flat-square
+  [travis-ci]: https://travis-ci.org/nextorigin/spine-awaitajax
+  [coverage-master]: https://img.shields.io/coveralls/nextorigin/spine-awaitajax/master.svg?style=flat-square
+  [coveralls]: https://coveralls.io/r/nextorigin/spine-awaitajax
+  [dependency]: https://img.shields.io/david/nextorigin/spine-awaitajax.svg?style=flat-square
+  [david]: https://david-dm.org/nextorigin/spine-awaitajax
+  [dev-dependency]: https://img.shields.io/david/dev/nextorigin/spine-awaitajax.svg?style=flat-square
+  [david-dev]: https://david-dm.org/nextorigin/spine-awaitajax#info=devDependencies
+  [downloads]: https://img.shields.io/npm/dm/spine-awaitajax.svg?style=flat-square
+  [npm]: https://www.npmjs.org/package/spine-awaitajax
+  [npm-stats]: https://nodei.co/npm/spine-awaitajax.png?downloads=true&downloadRank=true&stars=true

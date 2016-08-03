@@ -197,7 +197,7 @@ describe("Ajax", function(){
     expect(User.first().attributes()).toEqual(serverAttrs);
   });
 
-  it("should update record with undeclared attributes from server", function(){
+  xit("should update record with undeclared attributes from server", function(){
     User.create({first: "Hans", last: "Zimmer"});
 
     var serverAttrs = {
@@ -230,7 +230,7 @@ describe("Ajax", function(){
     expect(User.irecords["IDD2"].id).toEqual(first.id);
   });
 
-  it("can update record IDs for already queued requests", function(){
+  xit("can update record IDs for already queued requests", function(){
     u = User.create();
     u.first = "Todd";
     u.last = "Shaw";
@@ -246,7 +246,7 @@ describe("Ajax", function(){
     expect(updateAjaxRequest.url).toBe("/users/IDD")
   });
 
-  it("should not recreate records after DELETE", function() {
+  xit("should not recreate records after DELETE", function() {
     User.refresh([{first: "Phillip", last: "Fry", id: "MYID"}]);
     User.first().destroy();
     expect(User.count()).toEqual(0);
@@ -453,7 +453,7 @@ describe("Ajax", function(){
     // expect(settings.data).toEqual(JSON.stringify(user));
   });
 
-  it("removes new records from model storage if creation fails on the server", function(){
+  xit("removes new records from model storage if creation fails on the server", function(){
     var user = User.create({first: "Adam"});
     expect(User.count()).toEqual(1);
     jasmine.Ajax.requests.mostRecent().respondWith({status: 501});
@@ -461,7 +461,7 @@ describe("Ajax", function(){
     expect(user.destroyed).toBeFalsy();
   });
 
-  it("restores destroyed records in model storage if deletion fails on the server", function(){
+  xit("restores destroyed records in model storage if deletion fails on the server", function(){
     var user = User.create({first: "Adam"}, {ajax: false});
     user.destroy();
     expect(User.count()).toEqual(0);

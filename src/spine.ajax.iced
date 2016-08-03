@@ -94,6 +94,7 @@ class Base
     settings.error   = rv.id('error').defer xhr, statusText, error
 
     request = (next) ->
+      Ajax.pipeliner.window = if settings.type is 'GET' then Ajax.max else 1
       xhr = new $.ajax(settings)
       await rv.wait defer status
       switch status

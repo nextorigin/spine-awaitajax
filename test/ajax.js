@@ -24,42 +24,40 @@ describe("Ajax", function(){
   it("can GET a collection on fetch", function(){
     User.fetch();
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
+      contentType:  'application/json',
       dataType:     'json',
       processData:  false,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       type:         'GET',
-      url:          '/users',
-      data:         undefined
-    });
+      url:          '/users'
+    }));
   });
 
   it("can use custom HTTP method to fetch a collection", function(){
     Spine.Ajax.config.loadMethod = 'POST'
     User.fetch();
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:     'json',
       processData:  false,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       type:         'POST',
-      url:          '/users',
-      data:         undefined
-    });
+      url:          '/users'
+    }));
   });
 
   it("can GET a record on fetch", function(){
     User.refresh([{first: "John", last: "Williams", id: "IDD"}]);
     User.fetch({id: "IDD"});
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:     'json',
       processData:  false,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       type:         'GET',
-      url:          '/users/IDD',
-      data:         undefined
-    });
+      url:          '/users/IDD'
+    }));
   });
 
   it("can use custom HTTP method to fetch a record", function(){
@@ -67,14 +65,13 @@ describe("Ajax", function(){
     Spine.Ajax.config.loadMethod = 'POST'
     User.fetch({id: "IDD"});
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:     'json',
       processData:  false,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       type:         'POST',
-      url:          '/users/IDD',
-      data:         undefined
-    });
+      url:          '/users/IDD'
+    }));
   });
 
   it("allows undeclared attributes from server", function(){
@@ -93,7 +90,7 @@ describe("Ajax", function(){
   it("should send POST on create", function(){
     User.create({first: "Hans", last: "Zimmer", id: "IDD"});
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:     'json',
       processData:  false,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
@@ -101,7 +98,7 @@ describe("Ajax", function(){
       contentType:  'application/json',
       url:          '/users',
       data:         '{"first":"Hans","last":"Zimmer","id":"IDD"}'
-    });
+    }));
   });
 
   it("shouldn't send extra PUT requests on create", function(){
@@ -119,7 +116,7 @@ describe("Ajax", function(){
     Spine.Ajax.config.createMethod = 'PUT'
     User.create({first: "Hans", last: "Zimmer", id: "IDD"});
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       type:         'PUT',
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       contentType:  'application/json',
@@ -127,14 +124,14 @@ describe("Ajax", function(){
       data:         '{"first":"Hans","last":"Zimmer","id":"IDD"}',
       url:          '/users',
       processData:  false
-    });
+    }));
   });
 
   it("should send PUT on update", function(){
     User.refresh([{first: "John", last: "Williams", id: "IDD"}]);
     User.first().updateAttributes({first: "John2", last: "Williams2"});
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       type:         'PUT',
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       contentType:  'application/json',
@@ -142,7 +139,7 @@ describe("Ajax", function(){
       data:         '{"first":"John2","last":"Williams2","id":"IDD"}',
       url:          '/users/IDD',
       processData:  false
-    });
+    }));
   });
 
   it("can use custom HTTP method when updating record", function(){
@@ -150,7 +147,7 @@ describe("Ajax", function(){
     Spine.Ajax.config.updateMethod = 'PATCH'
     User.first().updateAttributes({first: "John2", last: "Williams2"});
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       type:         'PATCH',
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       contentType:  'application/json',
@@ -158,21 +155,20 @@ describe("Ajax", function(){
       data:         '{"first":"John2","last":"Williams2","id":"IDD"}',
       url:          '/users/IDD',
       processData:  false
-    });
+    }));
   });
 
   it("should send DELETE on destroy", function(){
     User.refresh([{first: "John", last: "Williams", id: "IDD"}]);
     User.first().destroy();
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:   'json',
       processData: false,
       headers:     { 'X-Requested-With' : 'XMLHttpRequest' },
       type:        'DELETE',
-      url:         '/users/IDD',
-      data:        undefined
-    });
+      url:         '/users/IDD'
+    }));
   });
 
   it("can use custom HTTP method to destroy record", function(){
@@ -180,14 +176,13 @@ describe("Ajax", function(){
     Spine.Ajax.config.destroyMethod = 'POST'
     User.first().destroy();
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       headers:     { 'X-Requested-With' : 'XMLHttpRequest' },
       dataType:    'json',
       processData: false,
       type:        'POST',
-      url:         '/users/IDD',
-      data:        undefined
-    });
+      url:         '/users/IDD'
+    }));
   });
 
   it("should update record after PUT/POST", function(){
@@ -487,33 +482,33 @@ describe("Ajax", function(){
   it("should not double stringify GET requests where data is a string", function(){
     User.fetch({ data : "shineyHappy=true" });
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:     'json',
       processData:  false,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       type:         'GET',
       url:          '/users',
       data:         'shineyHappy=true',
-    });
+    }));
   });
 
   it("should not stringify data for GET requests where data is an object and `processData` is set to true", function(){
     User.fetch({ data : { shineyHappy : true }, processData : true });
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:     'json',
       processData:  true,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       type:         'GET',
       data:         { shineyHappy : true },
       url:          '/users',
-    });
+    }));
   });
 
   it("should stringify data for POST requests where data gets passed as an object and processData is set as default (false)", function(){
     User.create({ first: 'Adam', id: '123' });
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       dataType:     'json',
       processData:  false,
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
@@ -521,7 +516,7 @@ describe("Ajax", function(){
       contentType:  'application/json',
       data:         '{"first":"Adam","id":"123"}',
       url:          '/users',
-    });
+    }));
   });
 
   it("can get a url property with optional host from a model and model instances", function(){
@@ -539,7 +534,7 @@ describe("Ajax", function(){
   it("can override POST url with options on create", function(){
     User.create({ first: 'Adam', id: '123' }, { url: '/people' });
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       type:         'POST',
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       dataType:     'json',
@@ -547,27 +542,26 @@ describe("Ajax", function(){
       contentType:  'application/json',
       url:          '/people',
       processData:  false
-    });
+    }));
   });
 
   it("can override GET url with options on fetch", function(){
     User.fetch({ url: '/people' });
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       type:         'GET',
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       dataType:     'json',
       url:          '/people',
-      processData:  false,
-      data:         undefined
-    });
+      processData:  false
+    }));
   });
 
   it("can override PUT url with options on update", function(){
     user = User.create({ first: 'Adam', id: '123' }, { ajax: false });
     user.updateAttributes({ first: 'Odam' }, { url: '/people' });
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       type:         'PUT',
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       dataType:     'json',
@@ -575,21 +569,20 @@ describe("Ajax", function(){
       contentType:  'application/json',
       url:          '/people',
       processData:  false
-    });
+    }));
   });
 
   it("can override DELETE url with options on destroy", function(){
     user = User.create({ first: 'Adam', id: '123' }, { ajax: false });
     user.destroy({ url: '/people' });
 
-    expect(jQuery.ajax).toHaveBeenCalledWith({
+    expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
       type:         'DELETE',
       headers:      { 'X-Requested-With' : 'XMLHttpRequest' },
       dataType:     'json',
       url:          '/people',
-      processData:  false,
-      data:         undefined
-    });
+      processData:  false
+    }));
   });
 
   it("should have a url function", function(){

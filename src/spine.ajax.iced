@@ -1,6 +1,7 @@
 Spine   = @Spine or require "spine"
 {Model} = Spine
-{Pipeliner} = require "iced-runtime"
+iced    = require "iced-runtime"
+{Pipeliner, Rendezvous} = iced
 
 
 Ajax =
@@ -31,6 +32,7 @@ Ajax =
     request @pipeliner.defer()
 
   clearQueue: ->
+    return unless @pipeliner
     @pipeliner.queue = []
     @pipeliner.n_out = 0
 
@@ -190,7 +192,7 @@ Include =
   url: (args...) ->
     url = Ajax.getURL(@constructor)
     url += '/' unless url.charAt(url.length - 1) is '/'
-    url += Tiger.Ajax.encode(@id)
+    url += encodeURIComponent(@id)
     args.unshift(url)
     args.join('/')
 

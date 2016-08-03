@@ -2,11 +2,12 @@
   "name": "spine-awaitajax",
   "version": "1.0.0",
   "description": "Spine.Ajax & AwaitAjax for Spine.JS and Iced CoffeeScript await/defer pattern",
-  "main": "spine-awaitajax.js",
+  "main": "spine.ajax.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "build": "iced --bare --map --runtime node -o ./ -c src/",
     "test": "karma start --single-run"
   },
   "repository": {

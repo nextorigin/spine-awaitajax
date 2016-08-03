@@ -51,10 +51,20 @@ module.exports = (config) ->
     # test results reporter to use
     # possible values: 'dots', 'progress'
     # available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots', 'junit']
+    reporters: ['dots', 'junit', 'coverage']
 
     junitReporter:
       outputDir: "#{ JUNIT_DIR }/jquery-v#{ JQUERY_VERSION }"
+
+    coverageReporter: {
+        dir : 'coverage',
+        subdir: '.',
+        reporters: [
+            { type : 'lcovonly', subdir: '.', file: 'lcov.info' },
+            { type : 'text',     subdir: '.', file: 'coverage.txt' },
+            { type : 'html',     subdir: '.'}
+        ]
+    },
 
 
     # web server port

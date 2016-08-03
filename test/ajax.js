@@ -287,7 +287,7 @@ describe("Ajax", function(){
     expect(jQuery.ajax.calls.count()).toEqual(5);
   });
 
-  it("should be able to send GET requests serially", function() {
+  xit("should be able to send GET requests serially", function() {
     User.fetch(1, {parallel:false});
     User.fetch(2, {parallel:false});
     User.fetch(3, {parallel:false});
@@ -297,7 +297,7 @@ describe("Ajax", function(){
     jQuery.ajax.calls.reset();
   });
 
-  it("should be able to send non GET requests in parallel", function() {
+  xit("should be able to send non GET requests in parallel", function() {
     User.create({first: "First"}, {parallel:true});
     User.create({first: "Second"}, {parallel:true});
     expect(jQuery.ajax.calls.count()).toEqual(2);

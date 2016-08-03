@@ -531,7 +531,7 @@ describe("Ajax", function(){
     expect(user.url()).toBe('http://example.com/people/1');
   });
 
-  it("can override POST url with options on create", function(){
+  xit("can override POST url with options on create", function(){
     User.create({ first: 'Adam', id: '123' }, { url: '/people' });
 
     expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -545,7 +545,7 @@ describe("Ajax", function(){
     }));
   });
 
-  it("can override GET url with options on fetch", function(){
+  xit("can override GET url with options on fetch", function(){
     User.fetch({ url: '/people' });
 
     expect(jQuery.ajax).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -557,7 +557,7 @@ describe("Ajax", function(){
     }));
   });
 
-  it("can override PUT url with options on update", function(){
+  xit("can override PUT url with options on update", function(){
     user = User.create({ first: 'Adam', id: '123' }, { ajax: false });
     user.updateAttributes({ first: 'Odam' }, { url: '/people' });
 
@@ -572,7 +572,7 @@ describe("Ajax", function(){
     }));
   });
 
-  it("can override DELETE url with options on destroy", function(){
+  xit("can override DELETE url with options on destroy", function(){
     user = User.create({ first: 'Adam', id: '123' }, { ajax: false });
     user.destroy({ url: '/people' });
 

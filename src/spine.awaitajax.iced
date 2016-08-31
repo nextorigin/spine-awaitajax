@@ -2,17 +2,23 @@ Spine = @Spine or require "spine"
 
 
 awaitAjax =
-  awaitAjax: (options, cb, queue = false) ->
+  awaitAjax: (options, cb) ->
     rv = new iced.Rendezvous()
 
     options.success = rv.id('success').defer data, statusText, xhr # data, statusText, xhr
     options.error   = rv.id('error').defer xhr, statusText, data # xhr, statusText, error
 
-    if queue then @Q.ajaxQueue options
+    if options.queue then @Q.ajaxQueue options
     else new $.ajax options
 
     await rv.wait defer status
-    cb status, xhr, statusText, data
+    switch status
+      when "success" then cb null, data, statusText, xhr
+      else
+        err      = new Error statusText
+        err.data = data
+        err.xhr  = xhr
+        cb err
 
   awaitGet: (options, cb, queue) ->
     options.method = 'GET'

@@ -1,6 +1,6 @@
 {
   "name": "spine-awaitajax",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Spine.Ajax & AwaitAjax for Spine.JS and Iced CoffeeScript await/defer pattern",
   "main": "spine.ajax.js",
   "directories": {

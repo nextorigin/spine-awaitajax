@@ -19,7 +19,7 @@ awaitAjax =
     @awaitAjax options, cb, queue
 
   awaitPost: (options, cb, queue) ->
-    options.method = 'GET'
+    options.method = 'POST'
     @awaitAjax options, cb, queue
 
   awaitQueuedAjax: (options, cb) ->

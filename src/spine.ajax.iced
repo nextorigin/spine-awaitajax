@@ -272,4 +272,4 @@ Ajax.Collection         = Collection
 Spine.Ajax              = Ajax
 Spine.Ajax.ModelAdapter = Ajax
 Spine.Ajax.Q            = Base
-module?.exports          = Ajax
+module?.exports         = Ajax

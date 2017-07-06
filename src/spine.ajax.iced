@@ -193,7 +193,7 @@ class Singleton extends Base
 
   recordResponse: (options = {}) =>
     (data, status, xhr) =>
-      if data? and Object.getOwnPropertyNames(data).length
+      if status isnt 204 and data? and Object.getOwnPropertyNames(data).length
         data = @model.fromJSON(data)
       else
         data = false

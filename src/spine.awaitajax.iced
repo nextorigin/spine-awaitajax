@@ -9,7 +9,7 @@ awaitAjax =
     options.error   = rv.id('error').defer xhr, statusText, data # xhr, statusText, error
 
     if options.queue then @Q.ajaxQueue options
-    else new $.ajax options
+    else @Q.ajax options
 
     await rv.wait defer status
     switch status

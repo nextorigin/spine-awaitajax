@@ -8,8 +8,8 @@ awaitAjax =
     options.success = rv.id('success').defer data, statusText, xhr # data, statusText, xhr
     options.error   = rv.id('error').defer xhr, statusText, data # xhr, statusText, error
 
-    if options.queue then @Q.ajaxQueue options
-    else @Q.ajax options
+    if options.queue then (new @Q).ajaxQueue options
+    else (new @Q).ajax options
 
     await rv.wait defer status
     switch status

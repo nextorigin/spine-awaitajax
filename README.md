@@ -1,12 +1,11 @@
 # spine-awaitajax
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/nextorigin/spine-awaitajax.svg)](https://greenkeeper.io/)
-
 [![Build Status][ci-master]][travis-ci]
 [![Coverage Status][coverage-master]][coveralls]
 [![Dependency Status][dependency]][david]
 [![devDependency Status][dev-dependency]][david]
 [![Downloads][downloads]][npm]
+[![Greenkeeper badge][greenkeeper-enabled]][greenkeeper]
 
 Turns Spine/jQuery Ajax requests into single-callback form, for use with await/defer
 
@@ -48,3 +47,5 @@ MIT
   [downloads]: https://img.shields.io/npm/dm/spine-awaitajax.svg?style=flat-square
   [npm]: https://www.npmjs.org/package/spine-awaitajax
   [npm-stats]: https://nodei.co/npm/spine-awaitajax.png?downloads=true&downloadRank=true&stars=true
+  [greenkeeper-enabled]: https://badges.greenkeeper.io/nextorigin/spine-awaitajax.svg
+  [greenkeeper]: https://greenkeeper.io/

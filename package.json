@@ -51,7 +51,7 @@
     "karma-jasmine-ajax": "^0.1.13",
     "karma-junit-reporter": "^1.2.0",
     "karma-phantomjs-launcher": "^1.0.4",
-    "phantomjs-prebuilt": "^2.1.15",
+    "phantomjs-prebuilt": "^2.1.16",
     "spine": "^1.6.2",
     "watchify": "^3.9.0"
   },

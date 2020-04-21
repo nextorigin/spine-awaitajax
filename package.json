@@ -41,7 +41,7 @@
     "browserify": "^14.4.0",
     "browserify-iced-coffee-coverage": "^1.1.1",
     "coffee-script": "^1.12.7",
-    "coveralls": "^2.13.1",
+    "coveralls": "^3.0.12",
     "jasmine-core": "^2.8.0",
     "jquery": "^3.2.1",
     "karma": "^1.7.1",
